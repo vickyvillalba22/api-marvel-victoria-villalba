@@ -25,9 +25,18 @@ fetch(myURL)
     })
 
 //CHARACTERS SECTION
+const characters = document.getElementById("characters");
 let cajaPersonajes = document.getElementById("cont-personajes");
 
 function mostrar_characters(data){
+
+    characters.classList.add("fondoGalaxia");
+
+    characters.innerHTML = `
+
+        <h2 class="w80 blanco mt10 df centerX">CHARACTERS</h2>
+
+    `
 
     cajaPersonajes.innerHTML = ""
 
@@ -40,7 +49,7 @@ function mostrar_characters(data){
         card.innerHTML = `
             <a href="detalle.html?id=${personaje.id}" target="_blank">
             <img class="w100 objCover" src="${personaje.thumbnail.path}.${personaje.thumbnail.extension}">
-            <h4>${personaje.name}</h4>
+            <h4 class="blanco">${personaje.name}</h4>
             </a>
 
         `
@@ -50,6 +59,8 @@ function mostrar_characters(data){
         cajaPersonajes.appendChild(card)
         
     }
+
+    characters.appendChild(cajaPersonajes)
 }
 
 function error (error){

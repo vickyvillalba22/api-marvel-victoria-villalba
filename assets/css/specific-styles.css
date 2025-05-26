@@ -19,7 +19,8 @@ h1{
     line-height: 1em;
 }
 h2{
-    font-size: 35px;
+    font-size: 40px;
+    font-weight: 500;
 }
 h4{
     font-size: 20px;
@@ -27,6 +28,19 @@ h4{
 }
 p{
     font-size: 16px;
+}
+
+.desc{
+    font-size: 24px;
+}
+
+.fondoGalaxia{
+    background-image: url("../imgs/galaxy\ background.jpg");
+}
+
+#shield-loader{
+    width: 50px;
+    height: auto;
 }
 
 #cont-personajes{
@@ -40,7 +54,7 @@ p{
 
     border-radius: 18px;
 
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(234, 235, 235, 0.196);
     backdrop-filter: blur(10px); /* efecto de vidrio */
     -webkit-backdrop-filter: blur(10px); /* soporte para Safari */
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
