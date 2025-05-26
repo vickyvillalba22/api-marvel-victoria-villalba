@@ -58,7 +58,7 @@ function render_personaje(personaje){
 
             <div class="w80">
 
-                <h2 class="vh10 df centerY">${personaje.name}</h2>
+                <h2 class="vh10 df centerY">${personaje.name.toUpperCase()}</h2>
 
                 <p>${personaje.description}</p>
 
@@ -87,7 +87,7 @@ function render_personaje(personaje){
                 
             </div>
 
-            <div class="w80>
+            <div class="w80">
             
                 <h3 class="mt10p">Events</h3>
                 <ul class="mt10p sinItem df slider">${personaje.events.available === 0 ? `<p>This character has not been part of Marvel special events</p>` : personaje.events.items.map(event => `<li class="cardcita">${event.name}</li>`).join("")}</ul>
@@ -117,6 +117,23 @@ function error (error){
 
     `
 }
+
+//ANIMACIONES
+
+const shield = document.getElementById("shield-loader");
+
+const shieldMove = [
+    { transform: 'rotate(0deg)' },
+    { transform: 'rotate(360deg)' }
+]
+
+const shieldTime = {
+    duration: 1000,
+    iterations: Infinity,
+    easing: "linear"
+}
+
+shield.animate(shieldMove, shieldTime)
 
 
 

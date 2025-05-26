@@ -10,7 +10,7 @@ myURL.searchParams.append("ts", ts);
 myURL.searchParams.append("apikey", publicAPIKey);
 myURL.searchParams.append("hash", mdhash);
 //este es opcional, muestra cuantos personajes mostrar
-myURL.searchParams.append("limit", 50);
+myURL.searchParams.append("limit", 20);
 
 const myHeaders = {
     "Accept": "application/json"
@@ -38,6 +38,9 @@ fetch(requestCharacters)
 //CHARACTERS SECTION
 const characters = document.getElementById("characters");
 let cajaPersonajes = document.getElementById("cont-personajes");
+const cargarMas = document.createElement("button");
+cargarMas.innerText = "Load More"
+cargarMas.classList.add("sinBorde");
 
 function mostrar_characters(data){
 
@@ -50,6 +53,8 @@ function mostrar_characters(data){
     `
 
     cajaPersonajes.innerHTML = ""
+
+    let index = 0
 
     for (let personaje of data){
 
@@ -65,13 +70,28 @@ function mostrar_characters(data){
 
         `
 
+        card.animate([
+            {opacity:0, transform: 'translateY(30px)'},
+            {opacity:1, transform: 'translateY(0px)'}
+        ], {
+            duration: 2000,
+            delay: index*100,
+            easing: 'ease-out', 
+            fill: 'forwards'
+        })
+
         //cuando se haga clic en la card, irá al html de detalle del personaje, y a traves de la url le pasará el id que usará cuando llame a la api y le pida info sobre ese personaje en esepcifico
 
         cajaPersonajes.appendChild(card)
+
+        index++
         
     }
 
     characters.appendChild(cajaPersonajes)
+
+    //BOTÓN "CARGAR MÁS"
+    characters.appendChild(cargarMas)
 }
 
 function error (error){
@@ -83,3 +103,20 @@ function error (error){
 
     `
 }
+
+//ANIMACIONES
+
+const shield = document.getElementById("shield-loader");
+
+const shieldMove = [
+    { transform: 'rotate(0deg)' },
+    { transform: 'rotate(360deg)' }
+]
+
+const shieldTime = {
+    duration: 1000,
+    iterations: Infinity,
+    easing: "linear"
+}
+
+shield.animate(shieldMove, shieldTime)
