@@ -18,7 +18,18 @@ myURL.searchParams.append("ts", ts);
 myURL.searchParams.append("apikey", publicAPIKey);
 myURL.searchParams.append("hash", mdhash);
 
-fetch(myURL)
+const myHeaders = {
+    "Accept": "application/json"
+}
+
+const myRequestParams = {
+    method: "GET",
+    headers: myHeaders
+}
+
+const requestDetails = new Request (myURL, myRequestParams)
+
+fetch(requestDetails)
     .then(res => res.json())
     .then(data => {
         //console.log(data) //esto devuelve la respuesta completa
@@ -47,7 +58,7 @@ function render_personaje(personaje){
 
             <div class="w80">
 
-                <h2 class="vh15 df centerY">${personaje.name}</h2>
+                <h2 class="vh10 df centerY">${personaje.name}</h2>
 
                 <p>${personaje.description}</p>
 
@@ -55,31 +66,31 @@ function render_personaje(personaje){
 
             <div class="w80">
 
-                <h3>Comics</h3>
-                <ul class="mt10p sinItem">${personaje.comics.available === 0 ? `<p>This character has not been part of Marvel comics</p>` : personaje.comics.items.map(comic => `<li>${comic.name}</li>`).join("")}</ul>
+                <h3 class="mt10p">Comics</h3>
+                <ul class="mt10p sinItem df slider">${personaje.comics.available === 0 ? `<p>This character has not been part of Marvel comics</p>` : personaje.comics.items.map(comic => `<li class="cardcita">${comic.name}</li>`).join("")}</ul>
                 
             </div>
 
             
             <div class="w80">
 
-                <h3>Series</h3>
-                <ul class="mt10p sinItem">${personaje.series.available === 0 ? `<p>This character has not been part of Marvel series</p>` : personaje.series.items.map(serie => `<li>${serie.name}</li>`).join("")}</ul>
+                <h3 class="mt10p">Series</h3>
+                <ul class="mt10p sinItem df slider">${personaje.series.available === 0 ? `<p>This character has not been part of Marvel series</p>` : personaje.series.items.map(serie => `<li class="cardcita">${serie.name}</li>`).join("")}</ul>
                 
             </div>
 
             
             <div class="w80">
 
-                <h3>Stories</h3>
-                <ul class="mt10p sinItem">${personaje.comics.available === 0 ? `<p>This character has not been part of Marvel stories</p>` : personaje.stories.items.map(storie => `<li>${storie.name}</li>`).join("")}</ul>
+                <h3 class="mt10p">Stories</h3>
+                <ul class="mt10p sinItem df slider">${personaje.comics.available === 0 ? `<p>This character has not been part of Marvel stories</p>` : personaje.stories.items.map(storie => `<li class="cardcita">${storie.name}</li>`).join("")}</ul>
                 
             </div>
 
-            <div class="w80">
+            <div class="w80>
             
-                <h3>Events</h3>
-                <ul class="mt10p sinItem">${personaje.events.available === 0 ? `<p>This character has not been part of Marvel special events</p>` : personaje.events.items.map(event => `<li>${event.name}</li>`).join("")}</ul>
+                <h3 class="mt10p">Events</h3>
+                <ul class="mt10p sinItem df slider">${personaje.events.available === 0 ? `<p>This character has not been part of Marvel special events</p>` : personaje.events.items.map(event => `<li class="cardcita">${event.name}</li>`).join("")}</ul>
 
             </div>
             

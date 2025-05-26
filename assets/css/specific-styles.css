@@ -72,3 +72,23 @@ p{
     align-items: center;
     padding-left: 18px;
 }
+
+.slider{
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    padding: 20px;
+}
+
+.cardcita{
+
+    border-radius: 12px;
+
+    padding: 10px 15px;
+    margin-left: 20px;
+
+    box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.17);
+
+    scroll-snap-align: start;
+}

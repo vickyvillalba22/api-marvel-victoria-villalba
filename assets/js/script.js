@@ -5,14 +5,25 @@ const mdhash = CryptoJS.MD5(ts + privateAPIKey + publicAPIKey).toString();
 
 //acá pongo la url base de la api
 const myURL = new URL ("https://gateway.marvel.com/v1/public/characters")
-//y acá le agrego los params que requiere
+//y acá le agrego los params que requiere marvel  en la url
 myURL.searchParams.append("ts", ts);
 myURL.searchParams.append("apikey", publicAPIKey);
 myURL.searchParams.append("hash", mdhash);
-//este es opcional, muestra cuantos personajes mostrar. Podría poner un boton que diga mostrar mas para que vaya llamando a más personajes
+//este es opcional, muestra cuantos personajes mostrar
 myURL.searchParams.append("limit", 50);
 
-fetch(myURL)
+const myHeaders = {
+    "Accept": "application/json"
+}
+
+const myRequestParams = {
+    method: "GET",
+    headers: myHeaders
+}
+
+const requestCharacters = new Request (myURL, myRequestParams)
+
+fetch(requestCharacters)
     .then(res => res.json())
     .then(data => {
         mostrar_characters(data.data.results)
