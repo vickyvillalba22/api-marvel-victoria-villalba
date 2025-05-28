@@ -114,9 +114,10 @@ function error (error){
     
     <div class="df w100 vh100 centerX centerY">
 
-        <div class="df columna w20 vh20 spacee">
-            <p class="p-error">Ups! Se ha producido un error:</p>
-            <span class="error">${error}</span>
+        <div class="df columna w20 vh30 spacee">
+            <p class="p-error">Oops! An error has occurred:</p>
+            <span class="error resaltado">${error}</span>
+            <a href="index.html"><button class="sinBorde">Return home</button></a>
         </div>
         
         <img class="objCover vh40" src="assets/imgs/error.webp">
