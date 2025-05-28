@@ -110,3 +110,14 @@ button{
     border-radius: 10px;
     margin: 30px;
 }
+
+/*ERROR*/
+
+.p-error{
+    font-size: 30px;
+}
+.error{
+    font-family: "Urbanist", sans-serif;
+    font-size: 20px;
+    color: rgb(163, 2, 2);
+}

@@ -70,7 +70,7 @@ function mostrar_characters(data){
 
         `
 
-        card.animate([
+        /*card.animate([
             {opacity:0, transform: 'translateY(30px)'},
             {opacity:1, transform: 'translateY(0px)'}
         ], {
@@ -78,7 +78,7 @@ function mostrar_characters(data){
             delay: index*100,
             easing: 'ease-out', 
             fill: 'forwards'
-        })
+        })*/
 
         //cuando se haga clic en la card, irá al html de detalle del personaje, y a traves de la url le pasará el id que usará cuando llame a la api y le pida info sobre ese personaje en esepcifico
 
@@ -98,8 +98,16 @@ function error (error){
 
     cajaPersonajes.innerHTML = `
     
-    <p>Ups! Se ha producido un error:</p>
-    <span>${error}</span>
+    <div class="df w100 vh100 centerX centerY">
+
+        <div class="df columna w20 vh20 spacee">
+            <p class="p-error">Ups! Se ha producido un error:</p>
+            <span class="error">${error}</span>
+        </div>
+        
+        <img class="objCover vh40" src="assets/imgs/error.webp">
+
+    </div>
 
     `
 }

@@ -112,8 +112,17 @@ function error (error){
 
     cajaPersonaje.innerHTML = `
     
-    <p>Ups! Se ha producido un error:</p>
-    <span>${error}</span>
+    <div class="df w100 vh100 centerX centerY">
+
+        <div class="df columna w20 vh20 spacee">
+            <p class="p-error">Ups! Se ha producido un error:</p>
+            <span class="error">${error}</span>
+        </div>
+        
+        <img class="objCover vh40" src="assets/imgs/error.webp">
+
+    </div>
+    
 
     `
 }
