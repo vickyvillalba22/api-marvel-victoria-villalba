@@ -9,8 +9,7 @@ const myURL = new URL ("https://gateway.marvel.com/v1/public/characters")
 myURL.searchParams.append("ts", ts);
 myURL.searchParams.append("apikey", publicAPIKey);
 myURL.searchParams.append("hash", mdhash);
-//este es opcional, muestra cuantos personajes mostrar
-myURL.searchParams.append("limit", 20);
+//myURL.searchParams.append("limit", 20);
 
 const myHeaders = {
     "Accept": "application/json"
@@ -21,13 +20,25 @@ const myRequestParams = {
     headers: myHeaders
 }
 
-const requestCharacters = new Request (myURL, myRequestParams)
+function fetchearCharacters (from, limit){
 
-fetch(requestCharacters)
-    .then(res => res.json())
+    myURL.searchParams.append("offset", from)
+    myURL.searchParams.append("limit", limit)
+
+    const requestCharacters = new Request (myURL, myRequestParams)
+
+    fetch(requestCharacters)
+    .then(res => {
+        //verificacion de autorización http
+        if (!res.ok){
+            console.log(`HTTP Error":${res.status}`);  
+        }
+        return res.json()
+    })    
     .then(data => {
+        console.log(data)
+        //renderiza los datos
         mostrar_characters(data.data.results)
-        //console.log(data) //esto devuelve la respuesta sin los datos
         console.log(data.data.results) //esto accede al objeto respuesta, al objeto que tiene la data, que tiene los datos de personajes en este caso
     })
     .catch(err => {
@@ -35,12 +46,13 @@ fetch(requestCharacters)
         error(err)
     })
 
+}
+
+fetchearCharacters(0, 20)
+
 //CHARACTERS SECTION
 const characters = document.getElementById("characters");
 let cajaPersonajes = document.getElementById("cont-personajes");
-const cargarMas = document.createElement("button");
-cargarMas.innerText = "Load More"
-cargarMas.classList.add("sinBorde");
 
 function mostrar_characters(data){
 
@@ -54,7 +66,7 @@ function mostrar_characters(data){
 
     cajaPersonajes.innerHTML = ""
 
-    let index = 0
+    //let index = 0
 
     for (let personaje of data){
 
@@ -80,18 +92,14 @@ function mostrar_characters(data){
             fill: 'forwards'
         })*/
 
-        //cuando se haga clic en la card, irá al html de detalle del personaje, y a traves de la url le pasará el id que usará cuando llame a la api y le pida info sobre ese personaje en esepcifico
-
         cajaPersonajes.appendChild(card)
 
-        index++
+        //index++
         
     }
 
-    characters.appendChild(cajaPersonajes)
+characters.appendChild(cajaPersonajes)
 
-    //BOTÓN "CARGAR MÁS"
-    characters.appendChild(cargarMas)
 }
 
 function error (error){
@@ -100,7 +108,7 @@ function error (error){
     
     <div class="df w100 vh100 centerX centerY">
 
-        <div class="df columna w20 vh20 spacee">
+        <div class="df columna w100 vh20 spacee">
             <p class="p-error">Ups! Se ha producido un error:</p>
             <span class="error">${error}</span>
         </div>

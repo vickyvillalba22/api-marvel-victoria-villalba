@@ -32,7 +32,7 @@ const requestDetails = new Request (myURL, myRequestParams)
 fetch(requestDetails)
     .then(res => res.json())
     .then(data => {
-        //console.log(data) //esto devuelve la respuesta completa
+        console.log(data) //esto devuelve la respuesta completa
         //console.log(data.data) //esto accede al objeto respuesta, al objeto que tiene la data, que tiene los datos de personajes en este caso, con los parametros
         //console.log(data.data.results); //tiene un array con todos los personajes que le hayamos pedido (array de objetos)
         console.log(data.data.results[0]); //accede directamente al objeto propio del personaje
