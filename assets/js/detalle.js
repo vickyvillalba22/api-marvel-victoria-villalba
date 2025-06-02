@@ -30,7 +30,13 @@ const myRequestParams = {
 const requestDetails = new Request (myURL, myRequestParams)
 
 fetch(requestDetails)
-    .then(res => res.json())
+    .then(res => {
+        if(!res.ok){
+            console.log(`HTTP Error":${res.status}`); 
+        }
+        return res.json()
+    }
+    )
     .then(data => {
         console.log(data) //esto devuelve la respuesta completa
         //console.log(data.data) //esto accede al objeto respuesta, al objeto que tiene la data, que tiene los datos de personajes en este caso, con los parametros

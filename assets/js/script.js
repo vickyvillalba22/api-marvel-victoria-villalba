@@ -20,10 +20,12 @@ const myRequestParams = {
     headers: myHeaders
 }
 
+let cantidadFetch = 0;
+
 function fetchearCharacters (from, limit){
 
-    myURL.searchParams.append("offset", from)
-    myURL.searchParams.append("limit", limit)
+    myURL.searchParams.set("offset", from)
+    myURL.searchParams.set("limit", limit)
 
     const requestCharacters = new Request (myURL, myRequestParams)
 
@@ -37,9 +39,18 @@ function fetchearCharacters (from, limit){
     })    
     .then(data => {
         console.log(data)
-        //renderiza los datos
-        mostrar_characters(data.data.results)
         console.log(data.data.results) //esto accede al objeto respuesta, al objeto que tiene la data, que tiene los datos de personajes en este caso
+
+        console.log(cantidadFetch);
+        
+        //renderiza los datos
+        if (cantidadFetch==0){
+            acomodarDestino()
+        }
+
+        cargarCards(data.data.results)
+        cantidadFetch++
+        
     })
     .catch(err => {
         console.error(err);
@@ -48,13 +59,35 @@ function fetchearCharacters (from, limit){
 
 }
 
-fetchearCharacters(0, 20)
+let inicio = 0;
+let limite = 20;
+
+//cuando se carga la pagina por primera vez
+fetchearCharacters(inicio, limite)
+inicio+=limite;
+
+const sentinel = document.getElementById("sentinel");
+
+const observerCharacters = new IntersectionObserver ((entries)=>{
+    //como es uno solo, agarro ese del array entries
+    let entry = entries[0]
+
+    if (entry.isIntersecting){
+        console.log(inicio, limite);
+        
+        fetchearCharacters(inicio, limite)
+        inicio+=limite;
+    }
+
+})
+
+observerCharacters.observe(sentinel)
 
 //CHARACTERS SECTION
 const characters = document.getElementById("characters");
 let cajaPersonajes = document.getElementById("cont-personajes");
 
-function mostrar_characters(data){
+function acomodarDestino(data){
 
     characters.classList.add("fondoGalaxia");
 
@@ -66,7 +99,9 @@ function mostrar_characters(data){
 
     cajaPersonajes.innerHTML = ""
 
-    //let index = 0
+}
+
+function cargarCards (data){
 
     for (let personaje of data){
 
