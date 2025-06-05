@@ -1,9 +1,9 @@
 body{
-    background: linear-gradient(135deg, #f0faff, #ffffff, #e6f7ff);
-    color: black;
+    background-color: black;
+    color: rgb(255, 255, 255);
 }
 #logo{
-    width: 7%;
+    width: 5%;
 }
 
 h3, h4, p, li, button{
@@ -20,7 +20,7 @@ h1{
 }
 .resaltado{
     font-family: "Oswald", sans-serif;
-    color: rgb(213, 0, 0);
+    color: rgb(142, 20, 255);
 }
 h2{
     font-size: 40px;
@@ -36,6 +36,25 @@ p{
 
 .desc{
     font-size: 24px;
+}
+
+#heroSection{
+    background-image: url("../imgs/stars@2x.png");
+    background-repeat: no-repeat;
+    background-size: 100% 90vh;
+
+    background-color: rgba(0, 0, 0, 0.332);
+
+}
+
+#planetaPrincipal{
+    transform: rotateX(180deg);
+}
+
+.gradienteInvertido{
+    background-image: url("../imgs/gradiente-violeta-opp.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 90vh;
 }
 
 .fondoGalaxia{
@@ -82,6 +101,7 @@ p{
 .cardPersonaje:hover{
     transform: scale(1.05);
 }
+
 
 .slider{
     overflow-x: auto;

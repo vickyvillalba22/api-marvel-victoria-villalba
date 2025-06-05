@@ -171,3 +171,48 @@ const shieldTime = {
 }
 
 shield.animate(shieldMove, shieldTime)
+
+const planetaPrincipal = document.getElementById("planetaPrincipal");
+
+const planetMove = [
+    { transform: 'rotate(0deg)' },
+    { transform: 'rotate(360deg)' }
+]
+
+const planetTime = {
+    duration: 40000,
+    iterations: Infinity,
+    easing: "linear"
+}
+
+const movInicial = planetaPrincipal.animate(planetMove, planetTime)
+
+window.addEventListener("scroll", ()=>{
+
+    //freno la rotacion inicial para que no se sobreescriba
+    movInicial.pause()
+
+    const planetSize = [
+    {transform: 'scale(1)'},
+    {transform: 'scale(0.1)'}
+    ];
+
+    const sizeTime = {
+        duration: 1,
+        fill: 'forwards' //mantiene el ultimo estado
+    }
+
+    const cambioSize = planetaPrincipal.animate(planetSize, sizeTime);
+    //aca tambien pauso esta para controlarla desde el scroll
+    cambioSize.pause()
+
+    //cantidad de px que se han scrolleado en vertical
+    const scrollY = window.scrollY;
+    //punto en el que el planeta debería llegar a su tamaño final
+    const maxScroll = 1000;
+    //calcula el progreso de la animacion: busca el minimo entre el primero y uno. siendo uno el maximo, que es la duracion de la animacion establecida más arriba
+    const progress = Math.min(scrollY / maxScroll, 1)
+
+    //con esto decidimos en que parte de la animacion queremos estar
+    cambioSize.currentTime = progress
+})
