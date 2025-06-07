@@ -2,6 +2,14 @@ body{
     background-color: black;
     color: rgb(255, 255, 255);
 }
+
+header{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    /*poner que on scroll se ponga negro el fondo*/
+}
+
 #logo{
     width: 5%;
 }
@@ -70,6 +78,9 @@ p{
     height: auto;
 }
 
+#characters{
+    margin-top: 70px;
+}
 #cont-personajes{
     gap: 2em;
     margin-top: 50px;
@@ -116,7 +127,6 @@ p{
 }
 
 .cardcita{
-
     border-radius: 12px;
 
     padding: 10px 15px;
@@ -144,22 +154,26 @@ button{
     font-size: 20px;
 }
 
-#slider::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5); /* 50% de opacidad negra */
-  pointer-events: none;
-}
+/*SLIDER*/
 
 #slider .posAb{
     z-index: 1;
 }
 
-#slider button{
-    font-size: 25px;
+#slider i{
+    font-size: 30px;
 }
 
 #slider p{
     font-size: 20px;
+}
+
+#slider button{
+    font-size: 15px;
+}
+
+#slideBack,
+#slideNext {
+    font-size: 25px;
+    z-index: 30;
 }

@@ -38,7 +38,7 @@ function fetchearCharacters (from, limit){
         return res.json()
     })    
     .then(data => {
-        console.log(data)
+        //console.log(data)
         console.log(data.data.results) //esto accede al objeto respuesta, al objeto que tiene la data, que tiene los datos de personajes en este caso
 
         console.log(cantidadFetch);
@@ -216,3 +216,101 @@ window.addEventListener("scroll", ()=>{
     //con esto decidimos en que parte de la animacion queremos estar
     cambioSize.currentTime = progress
 })
+
+
+//EVENTOS SLIDER
+
+const urlEvents = new URL ("https://gateway.marvel.com/v1/public/events")
+
+urlEvents.searchParams.append("ts", ts);
+urlEvents.searchParams.append("apikey", publicAPIKey);
+urlEvents.searchParams.append("hash", mdhash);
+urlEvents.searchParams.append("limit", 5)
+
+const requestEvents = new Request (urlEvents, myRequestParams)
+
+/*fetch (requestEvents)
+    .then(res=>{
+        if(!res.ok) throw new Error ("Error http")
+        return res.json()
+    })
+    .then(data => {
+
+        console.log(data.data.results);
+
+        const arrayEventos = data.data.results
+
+        //llamada a funcion
+
+        return arrayEventos
+
+    })*/
+
+async function obtenerEventos (){
+
+    const res = await fetch(requestEvents)
+    const data = await res.json();
+    const arrayEventos = data.data.results
+
+    activarLogicaSlider(arrayEventos)
+    sliderUpdate(arrayEventos)
+}
+
+obtenerEventos()
+
+const contSlider = document.getElementById("slider")
+
+let currentSlide = 0
+
+function sliderUpdate (data){
+
+    console.log(data);
+
+    contSlider.innerHTML = `
+    
+        <img class="w70 bordeRedondo objCover vh60" src="${data[currentSlide].thumbnail.path}/landscape_incredible.${data[currentSlide].thumbnail.extension}" alt="">
+
+        <div class="posAb w100 df columna centerY vh30 spacee">
+            <h3>${data[currentSlide].title}</h3>
+            <a href=""><button class="sinBorde">More info</button></a>
+        </div>
+
+    `
+}
+
+
+const slideBack = document.getElementById("slideBack")
+const slideNext = document.getElementById("slideNext")
+
+function activarLogicaSlider(data){
+
+    console.log(slideBack);
+
+    slideBack.addEventListener('click', ()=>{
+
+        console.log("hola");
+
+        currentSlide--
+
+        if (currentSlide<0) {
+            currentSlide = data.length-1
+        }
+
+        sliderUpdate(data)
+
+    })
+
+    slideNext.addEventListener('click', ()=>{
+
+        currentSlide++
+
+        if(currentSlide>=data.length-1){
+            currentSlide = 0
+        }
+
+        sliderUpdate(data)
+
+    })
+
+}
+
