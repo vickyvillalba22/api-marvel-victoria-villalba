@@ -6,7 +6,7 @@ body{
     width: 5%;
 }
 
-h3, h4, p, li, button{
+h3, h4, p, li, button, span{
     font-family: "Urbanist", sans-serif;
 }
 h1, h2{
@@ -25,6 +25,9 @@ h1{
 h2{
     font-size: 40px;
     font-weight: 500;
+}
+h3{
+    font-size: 40px;
 }
 h4{
     font-size: 20px;
@@ -138,4 +141,12 @@ button{
 .error{
     font-family: "Urbanist", sans-serif;
     font-size: 20px;
+}
+
+#slider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* 50% de opacidad negra */
+  pointer-events: none;
 }

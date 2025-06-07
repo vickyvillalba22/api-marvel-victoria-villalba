@@ -180,7 +180,7 @@ const planetMove = [
 ]
 
 const planetTime = {
-    duration: 40000,
+    duration: 100000,
     iterations: Infinity,
     easing: "linear"
 }
