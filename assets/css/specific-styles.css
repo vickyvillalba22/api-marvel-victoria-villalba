@@ -6,10 +6,10 @@ body{
     width: 5%;
 }
 
-h3, h4, p, li, button, span{
+h4, p, li, button, span{
     font-family: "Urbanist", sans-serif;
 }
-h1, h2{
+h1, h2, h3{
     font-family: "Oswald", sans-serif;
 }
 
@@ -28,6 +28,7 @@ h2{
 }
 h3{
     font-size: 40px;
+    font-weight: 400;
 }
 h4{
     font-size: 20px;
@@ -149,4 +150,16 @@ button{
   inset: 0;
   background: rgba(0, 0, 0, 0.5); /* 50% de opacidad negra */
   pointer-events: none;
+}
+
+#slider .posAb{
+    z-index: 1;
+}
+
+#slider button{
+    font-size: 25px;
+}
+
+#slider p{
+    font-size: 20px;
 }
