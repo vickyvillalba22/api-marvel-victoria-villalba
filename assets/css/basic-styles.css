@@ -54,6 +54,9 @@
 .df{
     display: flex;
 }
+.dg{
+    display: grid;
+}
 .columna{
     flex-direction: column;
 }

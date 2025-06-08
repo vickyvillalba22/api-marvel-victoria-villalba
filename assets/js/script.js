@@ -225,26 +225,9 @@ const urlEvents = new URL ("https://gateway.marvel.com/v1/public/events")
 urlEvents.searchParams.append("ts", ts);
 urlEvents.searchParams.append("apikey", publicAPIKey);
 urlEvents.searchParams.append("hash", mdhash);
-urlEvents.searchParams.append("limit", 5)
+urlEvents.searchParams.append("limit", 10)
 
 const requestEvents = new Request (urlEvents, myRequestParams)
-
-/*fetch (requestEvents)
-    .then(res=>{
-        if(!res.ok) throw new Error ("Error http")
-        return res.json()
-    })
-    .then(data => {
-
-        console.log(data.data.results);
-
-        const arrayEventos = data.data.results
-
-        //llamada a funcion
-
-        return arrayEventos
-
-    })*/
 
 async function obtenerEventos (){
 
@@ -272,7 +255,7 @@ function sliderUpdate (data){
 
         <div class="posAb w100 df columna centerY vh30 spacee">
             <h3>${data[currentSlide].title}</h3>
-            <a href=""><button class="sinBorde">More info</button></a>
+            <a href="detalleEvento.html?id=${data[currentSlide].id}" target="_blank"><button class="sinBorde">More info</button></a>
         </div>
 
     `
@@ -288,7 +271,8 @@ function activarLogicaSlider(data){
 
     slideBack.addEventListener('click', ()=>{
 
-        console.log("hola");
+        console.log(data.length);
+        
 
         currentSlide--
 
@@ -304,7 +288,7 @@ function activarLogicaSlider(data){
 
         currentSlide++
 
-        if(currentSlide>=data.length-1){
+        if(currentSlide>data.length-1){
             currentSlide = 0
         }
 
