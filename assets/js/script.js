@@ -188,6 +188,7 @@ shields.forEach((shield)=>{
 })
 
 const planetaPrincipal = document.getElementById("planetaPrincipal");
+const contPlaneta = document.getElementById("contPlanet");
 
 const planetMove = [
     { transform: 'rotate(0deg)' },
@@ -205,7 +206,7 @@ const movInicial = planetaPrincipal.animate(planetMove, planetTime)
 window.addEventListener("scroll", ()=>{
 
     //freno la rotacion inicial para que no se sobreescriba
-    movInicial.pause()
+    //movInicial.pause()
 
     const planetSize = [
     {transform: 'scale(1)'},
@@ -217,7 +218,7 @@ window.addEventListener("scroll", ()=>{
         fill: 'forwards' //mantiene el ultimo estado
     }
 
-    const cambioSize = planetaPrincipal.animate(planetSize, sizeTime);
+    const cambioSize = contPlaneta.animate(planetSize, sizeTime);
     //aca tambien pauso esta para controlarla desde el scroll
     cambioSize.pause()
 
