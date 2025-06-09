@@ -33,6 +33,11 @@ const requestEventDetails = new Request (myURL, myRequestParams)
 fetch (requestEventDetails)
     .then(res => {
 
+        if(!res.ok){
+            console.log(`HTTP Error":${res.status}`); 
+            error(`HTTP Error":${res.status}`)
+        }
+
         return res.json();
         
     })
@@ -60,7 +65,7 @@ function render_evento(objEvento){
 
         <div class="posRel vh30 w100 df centerX centerY">
 
-            <img class="w100 vh30 objCover posAb" src="${objEvento.thumbnail.path + '/landscape_incredible.' + objEvento.thumbnail.extension}" alt="">
+            <img class="w100 vh30 objCover posAb bannerEvent" src="${objEvento.thumbnail.path + '/landscape_incredible.' + objEvento.thumbnail.extension}" alt="">
 
             <h1 class="posAb">${objEvento.title}</h1>
         
@@ -121,6 +126,27 @@ function render_evento(objEvento){
 
         `
 
+}
+
+//ERROR
+function error (error){
+
+    cajaPersonaje.innerHTML = `
+    
+    <div class="df w100 vh100 centerX centerY">
+
+        <div class="df columna w20 vh30 spacee">
+            <p class="p-error">Oops! An error has occurred:</p>
+            <span class="error resaltado">${error}</span>
+            <a href="index.html"><button class="sinBorde">Return home</button></a>
+        </div>
+        
+        <img class="objCover vh40" src="assets/imgs/error.webp">
+
+    </div>
+    
+
+    `
 }
 
 

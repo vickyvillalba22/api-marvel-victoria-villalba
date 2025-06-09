@@ -34,6 +34,7 @@ function fetchearCharacters (from, limit){
         //verificacion de autorización http
         if (!res.ok){
             console.log(`HTTP Error":${res.status}`);  
+            error(`HTTP Error":${res.status}`)
         }
         return res.json()
     })    
@@ -109,9 +110,21 @@ function cargarCards (data){
         card.setAttribute("id", data.indexOf(personaje));
         card.classList.add("cardPersonaje", "df", "columna", "spaceb")
 
+        let claseImagen;
+
+        if (personaje.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"){
+
+            claseImagen = "noImage"
+
+        } else {
+
+            claseImagen ="objCover"
+
+        }
+
         card.innerHTML = `
             <a href="detalle.html?id=${personaje.id}" target="_blank">
-            <img class="w100 objCover" src="${personaje.thumbnail.path}.${personaje.thumbnail.extension}">
+            <img class="w100 ${claseImagen}" src="${personaje.thumbnail.path}.${personaje.thumbnail.extension}">
             <h4 class="blanco">${personaje.name}</h4>
             </a>
 
@@ -157,7 +170,7 @@ function error (error){
 
 //ANIMACIONES
 
-const shield = document.getElementById("shield-loader");
+const shields = document.querySelectorAll(".shield-loader");
 
 const shieldMove = [
     { transform: 'rotate(0deg)' },
@@ -170,7 +183,9 @@ const shieldTime = {
     easing: "linear"
 }
 
-shield.animate(shieldMove, shieldTime)
+shields.forEach((shield)=>{
+    shield.animate(shieldMove, shieldTime)
+})
 
 const planetaPrincipal = document.getElementById("planetaPrincipal");
 
@@ -231,12 +246,26 @@ const requestEvents = new Request (urlEvents, myRequestParams)
 
 async function obtenerEventos (){
 
-    const res = await fetch(requestEvents)
-    const data = await res.json();
-    const arrayEventos = data.data.results
+    try {
+        const res = await fetch(requestEvents)
 
-    activarLogicaSlider(arrayEventos)
-    sliderUpdate(arrayEventos)
+        if(!res.ok){
+            console.log(`HTTP error! status: ${res.status}`);
+            error(`HTTP error! status: ${res.status}`)
+        }
+
+        const data = await res.json();
+        const arrayEventos = data.data.results
+
+        activarLogicaSlider(arrayEventos)
+        sliderUpdate(arrayEventos)
+
+    } catch (err) {
+
+        console.log(err);
+        error(err)
+        
+    }
 }
 
 obtenerEventos()

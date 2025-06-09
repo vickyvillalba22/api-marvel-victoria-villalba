@@ -31,8 +31,10 @@ const requestDetails = new Request (myURL, myRequestParams)
 
 fetch(requestDetails)
     .then(res => {
+        
         if(!res.ok){
             console.log(`HTTP Error":${res.status}`); 
+            error(`HTTP Error":${res.status}`)
         }
         return res.json()
     }
@@ -58,13 +60,23 @@ const cajaPersonaje = document.getElementById("personaje-info");
 
 function render_personaje(personaje){
 
+    if (personaje.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"){
+
+            claseImagen = "noImage"
+
+        } else {
+
+            claseImagen ="objCover"
+
+        }
+
     cajaPersonaje.innerHTML = `
         
         <div class="w50 vh100 df columna centerY spacea">
 
             <div class="w80">
 
-                <h2 class="vh10 df centerY">${personaje.name.toUpperCase()}</h2>
+                <h2 class="vh10 df centerY mt10p">${personaje.name.toUpperCase()}</h2>
 
                 <p>${personaje.description}</p>
 
@@ -104,7 +116,7 @@ function render_personaje(personaje){
 
         <div class="w50 vh100">
 
-            <img class="w100 vh100 objCover" src="${personaje.thumbnail.path}.${personaje.thumbnail.extension}" alt="">
+            <img class="w100 ${claseImagen} imgPersonaje" src="${personaje.thumbnail.path}.${personaje.thumbnail.extension}" alt="">
 
         </div>
 
@@ -136,7 +148,7 @@ function error (error){
 
 //ANIMACIONES
 
-const shield = document.getElementById("shield-loader");
+const shields = document.querySelectorAll(".shield-loader");
 
 const shieldMove = [
     { transform: 'rotate(0deg)' },
@@ -149,7 +161,12 @@ const shieldTime = {
     easing: "linear"
 }
 
-shield.animate(shieldMove, shieldTime)
+
+shields.forEach((shield)=>{
+    shield.animate(shieldMove, shieldTime)
+})
+
+
 
 
 

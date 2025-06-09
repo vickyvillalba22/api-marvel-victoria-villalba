@@ -7,7 +7,7 @@ header{
     position: sticky;
     top: 0;
     z-index: 10;
-    /*poner que on scroll se ponga negro el fondo*/
+    background-color: black;
 }
 
 #logo{
@@ -73,9 +73,11 @@ p{
     background-image: url("../imgs/galaxy\ background.jpg");
 }
 
-#shield-loader{
+.shield-loader{
     width: 50px;
     height: auto;
+
+    margin-top: 30px;
 }
 
 #characters{
@@ -124,6 +126,19 @@ p{
     scroll-behavior: smooth;
 
     padding: 20px;
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+
+#personaje-info{
+    background-image: url("../imgs/stars@2x.png");
+}
+
+.imgPersonaje{
+    position: sticky;
+    top: 0;
+    height: 100vh;
 }
 
 .cardcita{
@@ -132,7 +147,7 @@ p{
     padding: 10px 15px;
     margin-left: 20px;
 
-    box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.17);
+    background: rgba(255, 255, 255, 0.252);
 
     scroll-snap-align: start;
 }
@@ -152,6 +167,11 @@ button{
 .error{
     font-family: "Urbanist", sans-serif;
     font-size: 20px;
+}
+
+.noImage{
+    object-fit: cover;
+    object-position: 0 center;
 }
 
 /*SLIDER*/
@@ -179,6 +199,10 @@ button{
 }
 
 /*EVENTO*/
+
+.bannerEvent{
+    filter: brightness(50%);
+}
 
 .padreEvento {
     grid-template-columns: repeat(5, 50%);
