@@ -26,6 +26,9 @@ h1{
     font-weight: 500;
     line-height: 1em;
 }
+.colorVioleta{
+    color: rgb(142, 20, 255);
+}
 .resaltado{
     font-family: "Oswald", sans-serif;
     color: rgb(142, 20, 255);
@@ -196,6 +199,10 @@ button{
 #slideNext {
     font-size: 25px;
     z-index: 30;
+}
+
+#slider img{
+    filter: brightness(70%);
 }
 
 /*EVENTO*/

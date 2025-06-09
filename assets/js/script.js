@@ -258,7 +258,7 @@ async function obtenerEventos (){
         const arrayEventos = data.data.results
 
         activarLogicaSlider(arrayEventos)
-        sliderUpdate(arrayEventos)
+        sliderUpdate(arrayEventos, moveDirection)
 
     } catch (err) {
 
@@ -272,9 +272,11 @@ obtenerEventos()
 
 const contSlider = document.getElementById("slider")
 
-let currentSlide = 0
 
-function sliderUpdate (data){
+let currentSlide = 0
+let moveDirection = 1000
+
+function sliderUpdate (data, moveDirection){
 
     console.log(data);
 
@@ -288,6 +290,16 @@ function sliderUpdate (data){
         </div>
 
     `
+
+    //ANIMATE
+    contSlider.animate([
+        { opacity: 0, transform: `translateX(${moveDirection}px)` },
+        { transform: 'translateX(0)' }
+    ], {
+        duration: 500,
+        easing: 'ease-in',
+        fill: 'forwards'
+    });
 }
 
 
@@ -300,8 +312,7 @@ function activarLogicaSlider(data){
 
     slideBack.addEventListener('click', ()=>{
 
-        console.log(data.length);
-        
+        //console.log(data.length);
 
         currentSlide--
 
@@ -309,7 +320,9 @@ function activarLogicaSlider(data){
             currentSlide = data.length-1
         }
 
-        sliderUpdate(data)
+        moveDirection = -1000
+
+        sliderUpdate(data, moveDirection)
 
     })
 
@@ -323,7 +336,76 @@ function activarLogicaSlider(data){
 
         sliderUpdate(data)
 
+        moveDirection = 1000
+
+        sliderUpdate(data, moveDirection)
+
     })
 
 }
+
+//expandir con hover
+
+const expand = [
+    { transform: 'scale(1)' },
+    { transform: 'scale(1.5)' }
+]
+
+const expandTime = {
+    duration: 100,
+    fill: 'forwards'
+}
+
+const small = [
+    { transform: 'scale(1.5)' },
+    { transform: 'scale(1)' }
+]
+
+const smallTime = {
+    duration: 100,
+    fill: 'forwards'
+}
+
+
+document.addEventListener("DOMContentLoaded", ()=>{
+
+    const buttons = document.querySelectorAll("button")
+
+    buttons.forEach((button)=>{
+        button.addEventListener('mouseover', ()=>{
+            button.animate(expand, expandTime)
+        })
+        button.addEventListener('mouseout', ()=>{
+            button.animate(small, smallTime)
+        })
+    })
+
+})
+
+function maquina_de_escribir (elemento, texto, velocidad){
+
+    elemento.textContent = "";
+
+    let i=0;
+
+    function escribir(){
+        
+            if (i<texto.length){
+
+                elemento.textContent += texto.charAt(i);
+                i++;
+                setTimeout(escribir, velocidad);
+            }
+        
+    }
+
+    escribir()
+    
+}
+
+const titulo = document.querySelector("h1");
+const textoTitulo = titulo.textContent
+
+maquina_de_escribir(titulo, textoTitulo, 50)
+
 

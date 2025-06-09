@@ -58,6 +58,31 @@ fetch(requestDetails)
 
 const cajaPersonaje = document.getElementById("personaje-info");
 
+//la velocidad es para el set time out de cada cuanto aparecerá cada letra
+function maquina_de_escribir (elemento, texto, velocidad){
+
+    //vacía al elemento, al titulo por ejemplo
+    elemento.textContent = "";
+
+    let i=0;
+
+    //funcion recursiva para poder controlar el tiempo de escritura entre las letras
+    function escribir(){
+        
+            if (i<texto.length){
+
+                elemento.textContent += texto.charAt(i);
+                i++;
+                setTimeout(escribir, velocidad);
+            }
+        
+    }
+
+    //primera llamada a funcion, luego entra a la recursion. en esta primera llamada escribe la letra 0, luego antes de volverse a llamar aumenta a i
+    escribir()
+    
+}
+
 function render_personaje(personaje){
 
     if (personaje.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"){
@@ -76,7 +101,9 @@ function render_personaje(personaje){
 
             <div class="w80">
 
-                <h2 class="vh10 df centerY mt10p">${personaje.name.toUpperCase()}</h2>
+                <div class="df centerY">
+                    <h2 id="nombrePersonaje" class="vh10 df centerY mt10p">${personaje.name.toUpperCase()}</h2><h2 id="linea">|</h2>
+                </div>
 
                 <p>${personaje.description}</p>
 
@@ -122,6 +149,27 @@ function render_personaje(personaje){
 
 
     `
+
+    const linea = document.getElementById("linea");
+
+    const animacionLinea = linea.animate(
+        [
+            { opacity: 1 },
+            { opacity: 0 }
+        ],
+        {
+            duration: 1000,  
+            iterations: Infinity,  
+            easing: "ease-in-out"
+        }
+    )
+
+
+    let nombrePersonaje = document.getElementById("nombrePersonaje")
+
+    let textoOriginal = nombrePersonaje.textContent
+
+    maquina_de_escribir(nombrePersonaje, textoOriginal, 100, animacionLinea)
 
 }
 
