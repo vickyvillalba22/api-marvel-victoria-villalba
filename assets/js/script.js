@@ -405,4 +405,19 @@ const textoTitulo = titulo.textContent
 
 maquina_de_escribir(titulo, textoTitulo, 50)
 
+/*menu hamburguesa*/
+
+let abrirMenu = document.getElementById("abrir-menu");
+let cerrarMenu = document.getElementById("cerrar-menu");
+let nav = document.getElementById("nav");
+
+abrirMenu.addEventListener('click', ()=>{
+    nav.classList.add("visible")
+});
+
+cerrarMenu.addEventListener('click', ()=>{
+    nav.classList.remove("visible")
+    nav.classList.add("invisible")
+});
+
 
