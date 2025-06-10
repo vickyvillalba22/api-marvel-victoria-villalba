@@ -19,6 +19,7 @@
 
     <!--icons-->
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-brands/css/uicons-brands.css'>
 
 </head>
 
@@ -32,7 +33,7 @@
                     <a href="index.html" class="blanco"><li>Home</li></a>
                     <a href="#characters" class="blanco"><li>Characters</li></a>
                     <a href="#eventSlider" class="blanco"><li>Events</li></a>
-                    <li>Contact</li>
+                    <a href="#footer" class="blanco"><li>Contact</li></a>
                 </ul>
             </nav>
         </div>
@@ -76,20 +77,51 @@
 
         </section>
         
-        <section id="characters" class="df columna centerY">
+        <section class="df columna centerY">
             
-            <div id="cont-personajes" class="w80 df centerX wrap">
-                <p>Loading...</p>
-                <img class="shield-loader" src="assets/imgs/shield-loader.png" alt="">
+            <div id="characters" class="df columna centerY">
+
+                <div id="cont-personajes" class="w80 df centerX wrap">
+                    <p>Loading...</p>
+                    <img class="shield-loader" src="assets/imgs/shield-loader.png" alt="">
+                </div>
+
+            </div>
+
+            <div class="vh20 df centerX centerY fondoEstrellas w100">
+                <button id="loadMore" class="sinBorde invisible">Load more...</button>
             </div>
 
         </section>
 
-        <div id="sentinel" class="w100 vh10"></div>
 
     </main>
 
-    <footer></footer>
+    <footer id="footer" class="vh20 df centerX centerY w100">
+
+        <div class="df spaceb w70 centerY">
+
+            <p class="w20">Designed and developed by Victoria Villalba</p>
+
+            <div class="w10 vh10 df columna spacee">
+
+                <a href="https://personal-portfolio-phi-rosy-34.vercel.app/" class="blanco w100" target="_blank">
+                    <i class="fi fi-rr-globe"></i>
+                    <span>Portfolio</span>
+                </a>
+   
+
+                <a href="https://www.linkedin.com/in/vvillalba/" class="blanco w100" target="_blank">
+                    <i class="fi fi-brands-linkedin blanco"></i>
+                    <span>LinkedIn</span>
+                </a>
+                
+            </div>
+
+        </div>
+       
+
+    </footer>
     
 
     <!--armador de hash md5-->

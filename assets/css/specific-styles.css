@@ -74,6 +74,11 @@ p{
 
 .fondoGalaxia{
     background-image: url("../imgs/galaxy\ background.jpg");
+    box-shadow: 0 0 20px 20px rgb(0, 0, 0) inset;
+
+}
+.fondoEstrellas{
+    background-image: url("../imgs/stars@2x.png");
 }
 
 .shield-loader{
@@ -89,6 +94,7 @@ p{
 #cont-personajes{
     gap: 2em;
     margin-top: 50px;
+    padding-bottom: 30px;
 }
 
 .cardPersonaje{

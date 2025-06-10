@@ -67,9 +67,14 @@ let limite = 20;
 fetchearCharacters(inicio, limite)
 inicio+=limite;
 
-const sentinel = document.getElementById("sentinel");
+const loadMore = document.getElementById("loadMore");
 
-const observerCharacters = new IntersectionObserver ((entries)=>{
+loadMore.addEventListener('click', ()=>{
+    fetchearCharacters(inicio, limite)
+    inicio+=limite;
+})
+
+/*const observerCharacters = new IntersectionObserver ((entries)=>{
     //como es uno solo, agarro ese del array entries
     let entry = entries[0]
 
@@ -82,7 +87,7 @@ const observerCharacters = new IntersectionObserver ((entries)=>{
 
 })
 
-observerCharacters.observe(sentinel)
+observerCharacters.observe(sentinel)*/
 
 //CHARACTERS SECTION
 const characters = document.getElementById("characters");
@@ -91,6 +96,7 @@ let cajaPersonajes = document.getElementById("cont-personajes");
 function acomodarDestino(data){
 
     characters.classList.add("fondoGalaxia");
+    loadMore.classList.remove("invisible");
 
     characters.innerHTML = `
 
@@ -129,16 +135,6 @@ function cargarCards (data){
             </a>
 
         `
-
-        /*card.animate([
-            {opacity:0, transform: 'translateY(30px)'},
-            {opacity:1, transform: 'translateY(0px)'}
-        ], {
-            duration: 2000,
-            delay: index*100,
-            easing: 'ease-out', 
-            fill: 'forwards'
-        })*/
 
         cajaPersonajes.appendChild(card)
 

@@ -74,7 +74,7 @@ function render_evento(objEvento){
         
         <div class="dg padreEvento w60">
 
-            <div class="div1">
+            <div class="div1 card">
             
                 <h3>Description</h3>
 
@@ -84,7 +84,7 @@ function render_evento(objEvento){
         
  
 
-            <div class="df centerY spaceb div2 columna">
+            <div class="df centerY spaceb div2 columna card">
 
                 <h3>Dates</h3>
             
@@ -97,7 +97,7 @@ function render_evento(objEvento){
             </div>
             
 
-            <div class="div3">
+            <div class="div3 card">
                 <h3>Related Comics</h3>
                 <div>
 
@@ -109,7 +109,7 @@ function render_evento(objEvento){
             </div>
             
 
-            <div class="div4">
+            <div class="div4 card">
                 <h3>Involved Characters</h3>
                 <div>
 
@@ -125,6 +125,63 @@ function render_evento(objEvento){
         
 
         `
+        
+    const cards = document.querySelectorAll(".card")
+
+    console.log(cards);
+
+    //ANIMATIONS
+
+    //expandir y cambiar color con hover
+
+    const coloresHover = ['#A6AEBF', '#C5D3E8', '#D0E8C5', '#FFF8DE'];
+
+    cards.forEach((card, i)=>{
+
+        const colorHover = coloresHover[i]
+
+        const expand = [
+            { 
+                transform: 'scale(1)', 
+                backgroundColor: '#000', 
+                color: "fff" },  // color original
+            { 
+                transform: 'scale(1.05)', 
+                backgroundColor: coloresHover[i], 
+                color: "#000" }  // nuevo color en hover
+        ];
+
+        const expandTime = {
+            duration: 300,
+            fill: 'forwards'
+        };
+
+        const small = [
+            { 
+                transform: 'scale(1.05)', 
+                backgroundColor: coloresHover[i], 
+                color: "#000" },
+            { 
+                transform: 'scale(1)', 
+                backgroundColor: '#000', 
+                color:"#fff" }
+        ];
+
+        const smallTime = {
+            duration: 200,
+            fill: 'forwards'
+        };
+
+            
+        card.addEventListener('mouseover', ()=>{
+            card.animate(expand, expandTime)
+        })
+        card.addEventListener('mouseout', ()=>{
+            card.animate(small, smallTime)
+        })
+
+    })
+
 
 }
 
@@ -148,6 +205,11 @@ function error (error){
 
     `
 }
+
+
+
+
+
 
 
 
