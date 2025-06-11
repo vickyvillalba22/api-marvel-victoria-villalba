@@ -214,7 +214,7 @@ button{
 /*EVENTO*/
 
 .bannerEvent{
-    filter: brightness(50%);
+    filter: brightness(100%);
 }
 
 .padreEvento {
@@ -296,7 +296,7 @@ button{
         }
 
         #cont-personajes{
-            width: 100vw;
+            width: 100%;
         }
 
         .cardPersonaje{
@@ -340,7 +340,7 @@ button{
     }
 
     #slider img{
-        width: 100vw;
+        width: 100%;
         border-radius: 0;
     }
     #slider div{
@@ -349,7 +349,6 @@ button{
     #botonesSlider{
         width: 95vw;
     }
-
     .cardPersonaje{
         width: 35%;
         height: 40vh;
@@ -378,7 +377,6 @@ button{
     }
 
     .div1, .div2, .div3, .div4{
-
         grid-column: auto;
         grid-row: auto;
 
@@ -404,5 +402,28 @@ button{
         min-height: fit-content;
     }
 
+
+}
+
+@media (max-width: 400px){
+
+        #logo{
+            width: 20%;
+        }
+
+        .cardPersonaje{
+            width: 80%;
+            height: 30vh;
+        }
+
+        .cardPersonaje img{
+            border-radius: 18px;
+            height: 20vh;
+        }
+
+        .noImage{
+            object-fit: cover;
+            object-position: center 100%;
+        }
 
 }

@@ -278,7 +278,7 @@ function sliderUpdate (data, moveDirection){
 
     contSlider.innerHTML = `
     
-        <img class="w70 bordeRedondo objCover vh60" src="${data[currentSlide].thumbnail.path}/landscape_incredible.${data[currentSlide].thumbnail.extension}" alt="">
+        <img class="w70 bordeRedondo objCover vh60 bannerEvent" src="${data[currentSlide].thumbnail.path}/landscape_incredible.${data[currentSlide].thumbnail.extension}" alt="">
 
         <div class="posAb w100 df columna centerY vh30 spacee">
             <h3 class="textCenter">${data[currentSlide].title}</h3>
