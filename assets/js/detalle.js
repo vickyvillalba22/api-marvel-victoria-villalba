@@ -97,7 +97,7 @@ function render_personaje(personaje){
 
     cajaPersonaje.innerHTML = `
         
-        <div class="w50 vh100 df columna centerY spacea">
+        <div id="divDetalle1" class="w50 vh100 df columna centerY spacea">
 
             <div class="w80">
 
@@ -141,9 +141,9 @@ function render_personaje(personaje){
             
         </div>
 
-        <div class="w50 vh100">
+        <div id="divDetalle2" class="w50 vh100">
 
-            <img class="w100 ${claseImagen} imgPersonaje" src="${personaje.thumbnail.path}.${personaje.thumbnail.extension}" alt="">
+            <img class="w100 ${claseImagen} imgPersonaje vh30m" src="${personaje.thumbnail.path}.${personaje.thumbnail.extension}" alt="">
 
         </div>
 
@@ -213,6 +213,30 @@ const shieldTime = {
 shields.forEach((shield)=>{
     shield.animate(shieldMove, shieldTime)
 })
+
+/*menu hamburguesa*/
+
+let abrirMenu = document.getElementById("abrir-menu");
+let cerrarMenu = document.getElementById("cerrar-menu");
+let nav = document.getElementById("nav");
+
+const items = document.querySelectorAll("header a li")
+
+abrirMenu.addEventListener('click', ()=>{
+    nav.classList.add("visible")
+
+    items.forEach((item)=>{
+        item.addEventListener('click', ()=>{
+            nav.classList.remove("visible")
+        })
+    })
+
+});
+
+cerrarMenu.addEventListener('click', ()=>{
+    nav.classList.remove("visible")
+    nav.classList.add("invisible")
+});
 
 
 

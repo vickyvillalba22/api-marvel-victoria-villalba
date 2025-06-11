@@ -219,7 +219,7 @@ button{
 
 .padreEvento {
     grid-template-columns: repeat(5, 50%);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 20px;
 
     margin-top: 3em;
@@ -387,5 +387,22 @@ button{
         padding: 30px;
 
     }
+
+    /*DETALLE PERSONAJE*/
+
+    #personaje-info{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #divDetalle1, #divDetalle2{
+        width: 100%;
+    }
+    .vh30m{
+        height: 30vh;
+    }
+    #divDetalle2{
+        min-height: fit-content;
+    }
+
 
 }

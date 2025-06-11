@@ -206,6 +206,30 @@ function error (error){
     `
 }
 
+/*menu hamburguesa*/
+
+let abrirMenu = document.getElementById("abrir-menu");
+let cerrarMenu = document.getElementById("cerrar-menu");
+let nav = document.getElementById("nav");
+
+const items = document.querySelectorAll("header a li")
+
+abrirMenu.addEventListener('click', ()=>{
+    nav.classList.add("visible")
+
+    items.forEach((item)=>{
+        item.addEventListener('click', ()=>{
+            nav.classList.remove("visible")
+        })
+    })
+
+});
+
+cerrarMenu.addEventListener('click', ()=>{
+    nav.classList.remove("visible")
+    nav.classList.add("invisible")
+});
+
 
 
 

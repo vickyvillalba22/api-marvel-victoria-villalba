@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Details</title>
 
-     <link rel="shortcut icon" href="assets/imgs/favicon.webp" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/imgs/favicon.webp" type="image/x-icon">
 
     <link rel="stylesheet" href="assets/css/specific-styles.css">
     <link rel="stylesheet" href="assets/css/basic-styles.css">
@@ -14,17 +14,79 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+    <!--icons-->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-brands/css/uicons-brands.css'>
+
 </head>
 <body>
 
-    <section id="personaje-info" class="df vh100">
+    <header class="w100 df centerX">
+        <div class="w90 df vh10 spaceb centerY">
 
-        <div class="w100 vh100 df columna centerX centerY">
-            <p>Loading...</p>
-            <img class="mt10p shield-loader" src="assets/imgs/shield-loader.png" alt="">
+            <a href="index.html">
+                <img id="logo" class="objCover" src="assets/imgs/logo.png" alt="">
+            </a>
+
+            <i id="abrir-menu" class="fi fi-rr-menu-burger invisible visibleT"></i>
+
+            <nav id="nav" class="w30 invisibleT">
+
+                <ul id="nav-list" class="sinItem df w100 spaceb">
+                    <i id="cerrar-menu" class="fi fi-rr-cross-circle negro"></i>
+                    <a href="index.html" class="blanco"><li>Home</li></a>
+                    <a href="index.html#characters" class="blanco"><li>Characters</li></a>
+                    <a href="index.html#eventSlider" class="blanco"><li>Events</li></a>
+                    <a href="#footer" class="blanco"><li>Contact</li></a>
+                </ul>
+
+            </nav>
+
         </div>
+    </header>
 
-    </section>
+    <main>
+
+        <section id="personaje-info" class="df vh100">
+
+            <div class="w100 vh100 df columna centerX centerY">
+                <p>Loading...</p>
+                <img class="mt10p shield-loader" src="assets/imgs/shield-loader.png" alt="">
+            </div>
+
+        </section>
+
+    </main>
+
+    
+
+    <footer id="footer" class="vh20 df centerX centerY w100">
+
+        <div class="df spaceb w70 centerY">
+
+            <div id="divFooter1" class="w20">
+                <p>Designed and developed by Victoria Villalba</p>
+            </div>
+
+            <div id="divFooter2" class="w10 vh10 df columna spacee">
+
+                <a href="https://personal-portfolio-phi-rosy-34.vercel.app/" class="blanco w100" target="_blank">
+                    <i class="fi fi-rr-globe"></i>
+                    <span>Portfolio</span>
+                </a>
+   
+
+                <a href="https://www.linkedin.com/in/vvillalba/" class="blanco w100" target="_blank">
+                    <i class="fi fi-brands-linkedin blanco"></i>
+                    <span>LinkedIn</span>
+                </a>
+                
+            </div>
+
+        </div>
+       
+
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     
