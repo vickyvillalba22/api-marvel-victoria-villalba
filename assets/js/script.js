@@ -269,7 +269,6 @@ obtenerEventos()
 
 const contSlider = document.getElementById("slider")
 
-
 let currentSlide = 0
 let moveDirection = 1000
 
@@ -282,7 +281,7 @@ function sliderUpdate (data, moveDirection){
         <img class="w70 bordeRedondo objCover vh60" src="${data[currentSlide].thumbnail.path}/landscape_incredible.${data[currentSlide].thumbnail.extension}" alt="">
 
         <div class="posAb w100 df columna centerY vh30 spacee">
-            <h3>${data[currentSlide].title}</h3>
+            <h3 class="textCenter">${data[currentSlide].title}</h3>
             <a href="detalleEvento.html?id=${data[currentSlide].id}" target="_blank"><button class="sinBorde">More info</button></a>
         </div>
 
@@ -411,13 +410,23 @@ let abrirMenu = document.getElementById("abrir-menu");
 let cerrarMenu = document.getElementById("cerrar-menu");
 let nav = document.getElementById("nav");
 
+const items = document.querySelectorAll("header a li")
+
 abrirMenu.addEventListener('click', ()=>{
     nav.classList.add("visible")
+
+    items.forEach((item)=>{
+        item.addEventListener('click', ()=>{
+            nav.classList.remove("visible")
+        })
+    })
+
 });
 
 cerrarMenu.addEventListener('click', ()=>{
     nav.classList.remove("visible")
     nav.classList.add("invisible")
 });
+
 
 
