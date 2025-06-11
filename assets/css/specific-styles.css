@@ -236,6 +236,10 @@ button{
     padding: 30px;
 }
 
+footer p{
+    color: gray;
+}
+
 @media (max-width: 850px){
 
         .visibleT{
@@ -384,6 +388,10 @@ button{
         border-radius: 15px;
         padding: 30px;
 
+    }
+
+    .card{
+        width: 100%;
     }
 
     /*DETALLE PERSONAJE*/

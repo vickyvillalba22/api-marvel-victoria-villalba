@@ -230,6 +230,25 @@ cerrarMenu.addEventListener('click', ()=>{
     nav.classList.add("invisible")
 });
 
+//SHIELD LOADER
+
+const shields = document.querySelectorAll(".shield-loader");
+
+const shieldMove = [
+    { transform: 'rotate(0deg)' },
+    { transform: 'rotate(360deg)' }
+]
+
+const shieldTime = {
+    duration: 1000,
+    iterations: Infinity,
+    easing: "linear"
+}
+
+shields.forEach((shield)=>{
+    shield.animate(shieldMove, shieldTime)
+})
+
 
 
 
