@@ -3,6 +3,7 @@ const publicAPIKey = "22842b0f6ab2385f1cdd27b0fa7cdaab"
 const privateAPIKey = "6daca58e155b0840390f9c99cec436d6c153f417"
 const mdhash = CryptoJS.MD5(ts + privateAPIKey + publicAPIKey).toString();
 
+
 //acá pongo la url base de la api
 const myURL = new URL ("https://gateway.marvel.com/v1/public/characters")
 //y acá le agrego los params que requiere marvel  en la url
@@ -28,6 +29,10 @@ function fetchearCharacters (from, limit){
     myURL.searchParams.set("limit", limit)
 
     const requestCharacters = new Request (myURL, myRequestParams)
+
+    console.log(requestCharacters);
+    console.log("URL Final:", myURL.toString());
+    
 
     fetch(requestCharacters)
     .then(res => {
